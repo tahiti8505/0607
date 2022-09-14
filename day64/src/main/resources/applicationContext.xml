@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+      
+    <!-- test 패키지를 스캔 -->
+    <context:component-scan base-package="test" />
+    <bean id="aw" class="test.AppleWatch" />
+    
+    
+    
+    
+    
+	<!-- p 네임 스페이스 -->
+	<!--
+	<bean id="phone" class="test.Galaxy">
+		<constructor-arg ref="GalaxyWatch" />
+		<constructor-arg value="100%" />
+	</bean>
+	 생성자 인젝션 
+	<bean id="iphone" class="test.Iphone" >
+		<constructor-arg ref="GalaxyWatch" />
+		<constructor-arg value="9890" />
+	</bean>
+
+	<bean id="phone1" class="test.Iphone">
+		<property name="watch" ref="applewatch"></property>  어디에 뭘 넣을 건지 작성 
+		<property name="number" value="9890"></property>  어디에 뭘 넣을 건지 작성
+	</bean>
+	-->
+	<!-- 리스트일 때 setter 주입 
+	<bean id="tb" class="test.TestBean">
+		<property name="datas">
+			<list>
+				 value에 String 값 넣기 
+				<value>광주광역시</value>
+				<value>광주광역시 서구</value>
+				<value>쌍촌역</value>
+			</list>
+		</property>
+	</bean>
+	 p 네임스페이스를 활용한 setter 인젝션
+	<bean id="gp" class="test.Galaxy" p:watch-ref="GalaxyWatch" p:battery="100%"></bean>
+	<bean id="ip" class="test.Iphone" p:watch-ref="applewatch" p:number="9890"></bean>
+	<bean id="applewatch" class="test.AppleWatch" />
+	<bean id="GalaxyWatch" class="test.GalaxyWatch" />
+	 set 타입일 때 setter 주입, set은 집합이기 때문에 중복 허용x	
+	<bean id="tb" class="test.TestBean">
+		<property name="datas">
+			<set>
+				<value>바나나</value>
+				<value>바나나</value>
+				<value>키위</value>
+			</set>
+		</property>
+	</bean>
+	 
+	 <bean id="tb" class="test.TestBean">
+		<property name="datas">
+			<map>
+				<entry><key><value>아무무</value></key><value>서포터</value></entry>
+				<entry><key><value>티모</value></key><value>탑</value></entry>
+				<entry><key><value>아리</value></key><value>미드</value></entry>
+			</map>
+		</property>
+	</bean>
+	-->
+</beans>
