@@ -15,10 +15,12 @@ public class Client {
 	public static void main(String[] args) {
 		// Spring 컨테이너를 동작시킬 수 있도록 코드 작성
 	    AbstractApplicationContext factory=new GenericXmlApplicationContext("applicationContext.xml");
+	    
 	    System.out.println("로그");
 	    Scanner sc = new Scanner(System.in);
-	    BoardService bs = (BoardService)factory.getBean("boardService");
+	    BoardService bs = (BoardService)factory.getBean("boardService"); // LookUp 메모리에서 객체를 '찾는' 요청
 	    MemberService ms = (MemberService)factory.getBean("memberService");
+	    
 	    while(true) {
 	    	System.out.println("1.회원가입 2.게시글 작성 3.나가기");
 	    	int action = sc.nextInt();

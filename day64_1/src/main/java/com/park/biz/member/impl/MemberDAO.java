@@ -41,6 +41,7 @@ public class MemberDAO {
 	MemberVO selectOneMember(MemberVO mvo) {
 		conn=JDBCUtil.connect();
 		ResultSet rs = null;
+		System.out.println("selectOne로그");
 		try {
 			pstmt=conn.prepareStatement(sql_login);
 			pstmt.setString(1, mvo.getMid());
