@@ -20,7 +20,7 @@ public class BoardDAO {
 	final String sql_update="UPDATE BOARD SET TITLE=?,CONTENT=? WHERE BID=?";
 	final String sql_delete="DELETE BOARD WHERE BID=?";
 	
-	void insertBoard(BoardVO vo) {
+	public void insertBoard(BoardVO vo) {
 		conn=JDBCUtil.connect();
 		try {
 			pstmt=conn.prepareStatement(sql_insert);
@@ -34,7 +34,7 @@ public class BoardDAO {
 			JDBCUtil.disconnect(pstmt, conn);
 		}
 	}
-	void updateBoard(BoardVO vo) {
+	public void updateBoard(BoardVO vo) {
 		conn=JDBCUtil.connect();
 		try {
 			pstmt=conn.prepareStatement(sql_update);
@@ -48,7 +48,7 @@ public class BoardDAO {
 			JDBCUtil.disconnect(pstmt, conn);
 		}
 	}
-	void deleteBoard(BoardVO vo) {
+	public void deleteBoard(BoardVO vo) {
 		conn=JDBCUtil.connect();
 		try {
 			pstmt=conn.prepareStatement(sql_delete);
@@ -60,7 +60,7 @@ public class BoardDAO {
 			JDBCUtil.disconnect(pstmt, conn);
 		}
 	}
-	BoardVO selectOneBoard(BoardVO vo) {
+	public BoardVO selectOneBoard(BoardVO vo) {
 		conn=JDBCUtil.connect();
 		try {
 			pstmt=conn.prepareStatement(sql_selectOne);
@@ -83,7 +83,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	List<BoardVO> selectAllBoard(BoardVO vo) {
+	public List<BoardVO> selectAllBoard(BoardVO vo) {
 		List<BoardVO> datas=new ArrayList<BoardVO>();
 		conn=JDBCUtil.connect();
 		try {

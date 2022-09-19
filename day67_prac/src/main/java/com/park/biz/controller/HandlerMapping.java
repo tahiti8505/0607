@@ -13,6 +13,9 @@ public class HandlerMapping {
 		mappings = new HashMap<String, Controller>();
 		
 		mappings.put("/login.do", new LoginController()); // 싱글톤 패턴 유지
+		mappings.put("/signin.do", new MainController()); // 싱글톤 패턴 유지
+		mappings.put("/mypage.do", new SignupController()); // 싱글톤 패턴 유지
+		mappings.put("/main.do", new MypageController()); // 싱글톤 패턴 유지
 	}
 	
 	public Controller getController(String command) {
