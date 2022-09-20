@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <!--
 	Stellar by HTML5 UP
@@ -27,7 +30,14 @@
 										<header class="major">
 											<h2>main</h2>
 										</header>
-										<h2>HELLO , <a href="mypage.do">apple</a> !&nbsp;&nbsp;:D</h2>
+										<c:choose>
+											<c:when test="${member!=null }">
+												<h2>HELLO , <a href="mypage.jsp">${member.name}</a> !&nbsp;&nbsp;:D</h2>
+											</c:when>
+											<c:when test="${member==null }">
+												<h2>Guest님 안녕하세요 !&nbsp;&nbsp;:D</h2>
+											</c:when>
+										</c:choose>
 										<div class="table-wrapper">
 											<table>
 												<thead>
@@ -38,32 +48,29 @@
 														<th>cnt</tr>
 												</thead>
 												<tbody>
+												<c:forEach var="b" items="${datas}">
 													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-														<td>29.99</td>
+														<td><a href="board.do?bid=${b.bid}">${b.bid}</a></td>
+														<td>${b.title}</td>
+														<td>${b.writer}</td>
+														<td>${b.content}</td>
 													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-														<td>29.99</td>
-													</tr>
+												</c:forEach>
 												</tbody>
 												<tfoot>
-													<tr>
-														<td colspan="3"></td>
-														<td><a href="logout.do">logout</a></td>
-													</tr>
+												<c:choose>
+													<c:when test="${member==null }">
+															<a href="login.jsp"><button type="button">로그인</button></a>
+													</c:when>
+													<c:when test="${member!=null}">
+															<a href="logout.do"><button type="button">로그아웃</button></a>
+															<a href="mypage.jsp"><button type="button">마이페이지</button></a>
+															<a href="deleteM.do?mid=${member.mid}&mpw=${member.mpw}"><button type="button">회원탈퇴</button></a>
+													</c:when>
+												</c:choose>
 												</tfoot>
 											</table>
+
 										</div>
 									</div>
 								</div>

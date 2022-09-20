@@ -54,6 +54,7 @@ public class BoardDAO {
 			pstmt=conn.prepareStatement(sql_delete);
 			pstmt.setInt(1,vo.getBid());
 			pstmt.executeUpdate();
+			System.out.println("delete board");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

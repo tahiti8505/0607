@@ -27,7 +27,7 @@
 										<header class="major">
 											<h2>sign in</h2>
 										</header>
-										<form action="signin.do" method="post">
+										<form action="signup.do" method="post">
 										<table class="alt">
 												<tbody>
 													<tr>

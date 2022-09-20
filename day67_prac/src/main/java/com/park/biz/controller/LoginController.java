@@ -30,6 +30,7 @@ public class LoginController implements Controller{
 		MemberVO mvo = new MemberVO();
 		mvo.setMid(request.getParameter("mid"));
 		mvo.setMpw(request.getParameter("mpw"));
+
 		
 		MemberDAO mDAO = new MemberDAO();
 		mvo = mDAO.selectOneMember(mvo);
@@ -45,8 +46,6 @@ public class LoginController implements Controller{
 		}
 		return mav;
 	}
-	
-	
 	
 	/*
 	@Override

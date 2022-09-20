@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <!--
 	Stellar by HTML5 UP
@@ -8,7 +9,7 @@
 -->
 <html>
 	<head>
-		<title>mypage</title>
+		<title>board</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -27,38 +28,41 @@
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
-											<h2>mypage</h2>
+											<h2>board</h2>
 										</header>
-										<form action="mypage.do" method="post">
-										<table class="alt">
+											<c:if test="${member!=null}">
+												<a href="deleteB.do?bid=${data.bid}"><button type="button">글 삭제</button></a>
+											</c:if>
+										<div class="table-wrapper">
+										<form action="updateB.do" method="post">
+										<input type="hidden" value="${data.bid}" name="bid">
+											<table>
+												<thead>
+													<tr>
+														<th>title</th>
+														<th>content</th>
+														<th>writer</th>														
+														<th>regdate</th>
+												</thead>
 												<tbody>
 													<tr>
-														<td>ID</td>
-														<td colspan="2"><input type="text" name="mid" value="${member.mid}" readonly="readonly"></td>
-													</tr>
-													<tr>
-														<td>PASSWORD</td>
-														<td colspan="2"><input type="password" name="mpw" required></td>
-													</tr>
-													<tr>
-														<td>NAME</td>
-														<td colspan="2"><input type="text" value="${member.name}" readonly="readonly"></td>
-													</tr>
-													<tr>
-														<td>ROLE</td>
-														<td colspan="2">
-														<input type="text" value="${member.role}" readonly="readonly">
-														</td>
-													</tr>
-													<tr>
-														<td colspan="3" align="right"><input type="submit" class="button primary" value="UPDATE"> </td>
+														<td><input type="text" value="${data.title}" name="title"></td>
+														<td><input type="text" value="${data.content}" name="content"></td>
+														<td>${data.writer}</td>
+														<td>${data.regdate}</td>
 													</tr>
 												</tbody>
-										</table>
-										</form>
-										<a href="main.do">go to main</a>
+												<tfoot>
+													<tr>
+														<td colspan="3"></td>
+														<td><a href="main.do">go to main</a></td>
+													</tr>
+												</tfoot>
+											</table>
+											<button type="submit" >글 수정</button>
+											</form>
+										</div>
 									</div>
-									<span class="image"><img src="images/pic01.jpg" alt="" /></span>
 								</div>
 							</section>
 
