@@ -83,7 +83,7 @@ public class MemberDAO {
 		} finally {
 			JDBCUtil.disconnect(pstmt, conn);
 		}
-		System.out.println("��! - 2");
+		System.out.println("끝! - 2");
 		return null;
 	}
 	public List<MemberVO> selectAllMember(MemberVO vo){

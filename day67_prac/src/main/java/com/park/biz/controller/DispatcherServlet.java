@@ -36,7 +36,6 @@ public class DispatcherServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		doAction(request, response);
 	}
 
@@ -48,7 +47,6 @@ public class DispatcherServlet extends HttpServlet {
 		doAction(request, response);
 	}
 	private void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String command = request.getRequestURI();
 		command=command.substring(command.lastIndexOf("/"));
 		System.out.println(command);
@@ -57,7 +55,7 @@ public class DispatcherServlet extends HttpServlet {
 		String viewName = ctrl.handleRequest(request, response);
 		
 		String view=null;
-		if(viewName.equals(".do")) {
+		if(viewName.contains(".do")) {
 			view=viewName;
 		}
 		else {
