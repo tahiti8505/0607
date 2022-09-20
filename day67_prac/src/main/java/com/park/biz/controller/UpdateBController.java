@@ -23,7 +23,7 @@ public class UpdateBController implements Controller {
 		
 		bdao.updateBoard(bvo);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main.do");
+		mav.setViewName("redirect:main.do");
 		return mav;
 	}
 

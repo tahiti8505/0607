@@ -29,4 +29,10 @@
 	<bean id="deleteM" class="com.park.biz.controller.DeleteMController"/>
 	<bean id="deleteB" class="com.park.biz.controller.DeleteBController"/>
 	<bean id="updateB" class="com.park.biz.controller.UpdateBController"/>
+	
+	<!-- ViewResolver 등록 -->
+   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/" />
+      <property name="suffix" value=".jsp" />
+   </bean>
 </beans>

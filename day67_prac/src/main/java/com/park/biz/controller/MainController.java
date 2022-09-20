@@ -22,7 +22,7 @@ public class MainController implements Controller{
 			List<BoardVO> datas = bDAO.selectAllBoard(bvo);
 			
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("main.jsp");
+			mav.setViewName("main");
 			mav.addObject("datas", datas);
 			return mav;
 	}

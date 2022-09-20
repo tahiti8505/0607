@@ -37,12 +37,12 @@ public class LoginController implements Controller{
 		
 		ModelAndView mav = new ModelAndView();
 		if(mvo==null) {
-			mav.setViewName("login.jsp");
+			mav.setViewName("redirect:login.jsp");
 		}
 		else {
 			HttpSession session=request.getSession();
 			session.setAttribute("member", mvo);
-			mav.setViewName("main.do");
+			mav.setViewName("redirect:main.do");
 		}
 		return mav;
 	}

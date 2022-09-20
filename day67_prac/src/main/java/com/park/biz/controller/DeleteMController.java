@@ -25,7 +25,7 @@ public class DeleteMController implements Controller{
 		session.invalidate();
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main.do");
+		mav.setViewName("redirect:main.do");
 		return mav;
 	}
 

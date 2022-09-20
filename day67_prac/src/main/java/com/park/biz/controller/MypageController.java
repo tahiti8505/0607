@@ -26,7 +26,7 @@ public class MypageController implements Controller {
 			
 			HttpSession session = request.getSession();
 			session.invalidate();
-			mav.setViewName("login.jsp");
+			mav.setViewName("redirect:login.jsp");
 			return mav;
 	}
 }

@@ -21,7 +21,7 @@ public class BoardController implements Controller{
 		
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("data", bvo);
-		mav.setViewName("boardForm.jsp");
+		mav.setViewName("boardForm");
 		return mav;
 	}
 	

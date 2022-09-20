@@ -28,7 +28,7 @@ public class SignupController implements Controller{
 			
 			mDAO.insertMember(mvo);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("main.do");
+			mav.setViewName("redirect:main.do");
 			return mav;
 	}
 }
