@@ -1,11 +1,10 @@
 package com.park.biz.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.park.biz.member.MemberVO;
 import com.park.biz.member.impl.MemberDAO;
@@ -22,9 +21,29 @@ public interface Controller {
 }
 
  */
-public class LoginController implements Controller{
 
-	@Override
+public class LoginController {
+	
+	@RequestMapping("/login.do")
+	public void selectOneMember(HttpServletRequest request) {
+		System.out.println("로그인 로그");
+		MemberVO mvo = new MemberVO();
+		mvo.setMid(request.getParameter("mid"));
+		mvo.setMpw(request.getParameter("mpw"));
+
+		
+		MemberDAO mDAO = new MemberDAO();
+		mvo = mDAO.selectOneMember(mvo);
+		
+		if(mvo==null) {
+		}
+		else {
+			HttpSession session=request.getSession();
+			session.setAttribute("member", mvo);
+		}
+	}
+	
+	/*
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("로그인 로그");
 		MemberVO mvo = new MemberVO();
@@ -46,6 +65,7 @@ public class LoginController implements Controller{
 		}
 		return mav;
 	}
+	*/
 	
 	/*
 	@Override
