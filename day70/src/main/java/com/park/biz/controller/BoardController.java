@@ -52,22 +52,21 @@ public class BoardController {
 	
 		System.out.println("검색 조건 : " + searchCondition);
 		System.out.println("검색어 : " + searchContent);
+		List<BoardVO> datas = null;
 		if(searchCondition.equals("title")) {
 			bvo.setTitle(searchContent);
-			List<BoardVO> datas = boardService.selectAllBoardT(bvo);
-			model.addAttribute("datas",datas);
+			datas = boardService.selectAllBoardT(bvo);
 
 		}
 		else if(searchCondition.equals("writer")) {
 			bvo.setContent(searchContent);
-			List<BoardVO> datas = boardService.selectAllBoardW(bvo);
-			model.addAttribute("datas",datas);
+			datas = boardService.selectAllBoardW(bvo);
 
 		}
 		else {
-			List<BoardVO> datas = boardService.selectAllBoard(bvo);
-			model.addAttribute("datas",datas);
+			datas = boardService.selectAllBoard(bvo);
 		}
+		model.addAttribute("datas",datas);
 
 		return "main.jsp";
 	}
