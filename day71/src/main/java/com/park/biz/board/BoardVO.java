@@ -11,7 +11,7 @@ public class BoardVO {
 	private String content;
 	private int cnt;
 	private String regdate;
-	private MultipartFile uploadFile;
+	private MultipartFile uploadFile; // 경로에 사진 저장을 담당
 	private String fileName;
 	
 	public String getFileName() {

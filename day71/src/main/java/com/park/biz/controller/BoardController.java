@@ -100,6 +100,7 @@ public class BoardController {
 	}
 	@RequestMapping("/insertB.do")
 	public String insertBoard(BoardVO bvo) throws IllegalStateException, IOException {
+		bvo.setFileName("default.jpg");
 		MultipartFile uploadFile=bvo.getUploadFile();
 		if(!uploadFile.isEmpty()) { // 업로드한 파일 존재여부 확인
 			String fileName = uploadFile.getOriginalFilename(); // 업로드한 파일명
@@ -107,6 +108,7 @@ public class BoardController {
 			uploadFile.transferTo(new File("D:\\PSJ\\workspace\\day71\\src\\main\\webapp\\images\\"+fileName)); // 파일의 저장 경로 설정 가능
 			bvo.setFileName(fileName);
 		}
+
 		boardService.insertBoard(bvo);
 		return "redirect:main.do";
 	}
