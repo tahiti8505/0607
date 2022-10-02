@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardVO {
 
 
+
 	private int bid;
 	private String title;
 	private String writer;
@@ -13,7 +14,14 @@ public class BoardVO {
 	private String regdate;
 	private MultipartFile uploadFile; // 경로에 사진 저장을 담당
 	private String fileName;
+	private int pcnt;
 	
+	public int getPcnt() {
+		return pcnt;
+	}
+	public void setPcnt(int pcnt) {
+		this.pcnt = pcnt;
+	}
 	public String getFileName() {
 		return fileName;
 	}

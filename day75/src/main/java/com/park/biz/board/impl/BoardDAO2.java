@@ -18,7 +18,7 @@ public class BoardDAO2 {
 	private JdbcTemplate jdbcTemplate;
 
 	final String sql_selectOne="SELECT * FROM BOARD WHERE BID=?";
-	final String sql_selectAll="SELECT * FROM BOARD ORDER BY BID DESC";
+	final String sql_selectAll="SELECT * FROM (SELECT * FROM BOARD ORDER BY BID DESC) WHERE ROWNUM<=?";
 	final String sql_insert="INSERT INTO BOARD(BID,TITLE,WRITER,CONTENT,UPLOADFILE) VALUES((SELECT NVL(MAX(BID),0)+1 FROM BOARD),?,?,?,?)";
 	final String sql_update="UPDATE BOARD SET TITLE=?,CONTENT=?,UPLOADFILE=? WHERE BID=?";
 	final String sql_delete="DELETE BOARD WHERE BID=?";
@@ -39,7 +39,8 @@ public class BoardDAO2 {
 		return jdbcTemplate.queryForObject(sql_selectOne,args,new BoardRowMapper());
 	}
 	List<BoardVO> selectAllBoard(BoardVO vo) {
-		return jdbcTemplate.query(sql_selectAll, new BoardRowMapper());
+		Object[] args= {vo.getPcnt()};
+		return jdbcTemplate.query(sql_selectAll, args, new BoardRowMapper());
 	}
 	List<BoardVO> selectAllBoardT(BoardVO vo) {
 		Object[] args= {vo.getTitle()};
